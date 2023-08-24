@@ -1,9 +1,7 @@
 name: "pre-release"
 on:
   push:
-    branches:
-      - master
-
+    
 jobs:
   pre-release:
     runs-on: ubuntu-latest
