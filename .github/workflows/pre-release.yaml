@@ -11,11 +11,11 @@ jobs:
       - run: make
 
       - name: upload
-        uses: marvinpinto/action-automatic-releases@latest
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "latest"
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
           prerelease: true
-          title: "Development Build"
-          files: |
-            out/Kino.pub.zip
+          artifacts: "out/Kino.pub.zip"
